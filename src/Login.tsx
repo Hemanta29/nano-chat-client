@@ -33,9 +33,9 @@ const Login: React.FC<{ onAuth: (token: string, user: { id: string; username: st
         try {
             const res = await axios.post<AuthResponse>(API + '/api/login', { username, password });
             onAuth(res.data.token, { id: res.data.user.id, username: res.data.user.username, displayName: res.data.user.displayName });
-        } catch (err: unknown) {
-            console.log(err);            
-            if (axios.isAxiosError(err)) {
+        } catch (err) {
+            console.log(err);
+            if (err instanceof Error && axios.isAxiosError(err)) {
                 setError(err.response?.data?.message || err.message || 'Login failed');
             } else {
                 setError('Login failed');
@@ -51,8 +51,8 @@ const Login: React.FC<{ onAuth: (token: string, user: { id: string; username: st
         try {
             const res = await axios.post<AuthResponse>(API + '/api/register', { username, password, displayName: username });
             onAuth(res.data.token, { id: res.data.user.id, username: res.data.user.username, displayName: res.data.user.displayName });
-        } catch (err: unknown) {
-            if (axios.isAxiosError(err)) {
+        } catch (err) {
+            if (err instanceof Error && axios.isAxiosError(err)) {
                 setError(err.response?.data?.error || err.message || 'Register failed');
             } else {
                 setError('Register failed');

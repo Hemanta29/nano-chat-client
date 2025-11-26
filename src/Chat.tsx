@@ -25,7 +25,7 @@ const Chat: React.FC<{ token: string; me: { id: string; username: string; displa
 
         // fetch users
         axios.get<User[]>(API + '/api/users', { headers: { Authorization: 'Bearer ' + token } })
-            .then(r => {
+            .then((r: { data: User[] }) => {
                 if (mounted) {
                     setUsers(r.data);
                     setUsersLoaded(true);
@@ -108,7 +108,7 @@ const Chat: React.FC<{ token: string; me: { id: string; username: string; displa
         if (!selected) return;
         let mounted = true;
         axios.get<Message[]>(`${API}/api/messages/${selected._id}`, { headers: { Authorization: 'Bearer ' + token } })
-            .then(r => { if (mounted) setMessages(r.data); })
+            .then((r: { data: Message[] }) => { if (mounted) setMessages(r.data); })
             .catch(console.error);
         return () => { mounted = false; };
     }, [selected, token]);
