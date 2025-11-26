@@ -1,0 +1,305 @@
+body {
+  margin: 0px;
+  font-family: Arial, sans-serif;
+  padding: 0px;
+  text-align: center;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: beige;
+}
+
+.login-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95dvh;
+  box-sizing: border-box;
+  align-items: center;
+
+  .login-wrapper {
+    width: 100dvw;
+    max-width: 50dvw;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .login-title {
+      margin-bottom: 20px;
+    }
+
+    .login-input {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:disabled {
+          background-color: #aaa;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .login-error {
+      color: red;
+      margin-bottom: 10px;
+    }
+
+    .login-buttons {
+      margin-top: 8px;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:disabled {
+          background-color: #aaa;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: 20px;
+
+  .chat-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex: 1;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .users-list {
+      flex: 1;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-sizing: border-box;
+      max-height: 30dvh;
+
+      .user-item {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+
+        .left,
+        .right {
+          display: flex;
+          align-items: center;
+
+          .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: #fff;
+          }
+
+          .username {
+            font-weight: bold;
+          }
+
+          .status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 8px;
+          }
+        }
+
+        .left {
+          gap: 8px;
+
+          .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+
+            span {
+              &:last-child {
+                font-size: 12px;
+                color: #888;
+              }
+            }
+          }
+        }
+
+        .right {
+          margin-left: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 4px;
+        }
+
+        .right span {
+          font-size: 12px;
+          color: #888;
+        }
+      }
+    }
+
+    .chat-window {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      height: 40dvh;
+      padding-top: 10px;
+      max-height: 40dvh;
+
+      h4 {
+        margin: 0 0 12px 0;
+      }
+
+      .messages-list {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        box-sizing: border-box;
+
+        .message {
+          margin: 6px 0;
+
+          &.sent {
+            text-align: right;
+
+            .message-content {
+              display: inline-block;
+              padding: 8px;
+              border-radius: 6px;
+              background: #dcf8c6;
+            }
+          }
+
+          &.received {
+            text-align: left;
+
+            .message-content {
+              display: inline-block;
+              padding: 8px;
+              border-radius: 6px;
+              background: #8cdbff;
+            }
+          }
+
+          .message-content {
+            max-width: 70%;
+          }
+        }
+      }
+    }
+
+    .message-input-container {
+      display: flex;
+      align-items: center;
+      /* Vertically align items */
+      border: 1px solid #ccc;
+      /* Optional: Add a border to the container */
+      border-radius: 5px;
+      padding: 5px;
+      background-color: #f9f9f9;
+
+      .message-input {
+        flex-grow: 1;
+        /* Allows the input to take up available space */
+        border: none;
+        /* Remove default input border */
+        padding: 8px 10px;
+        font-size: 16px;
+        outline: none;
+        /* Remove outline on focus */
+        background-color: transparent;
+        /* Match container background */
+      }
+
+      .message-input::placeholder {
+        color: #aaa;
+      }
+
+      .send-button {
+        background-color: #007bff;
+        /* Blue background */
+        color: white;
+        border: none;
+        border-radius: 3px;
+        padding: 8px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 10px;
+        /* Space between input and button */
+        transition: background-color 0.3s ease;
+        /* Smooth hover effect */
+      }
+
+      .send-button:hover {
+        background-color: #0056b3;
+        /* Darker blue on hover */
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .login-container .login-wrapper {
+    max-width: 70dvw;
+  }
+}
