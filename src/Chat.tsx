@@ -170,7 +170,7 @@ const Chat: React.FC<{ token: string; me: { id: string; username: string; displa
                                     <img className="avatar" src={u.avatar || userAvatar} alt="user avatar" height={32} width={32} />
                                     <div className="user-info">
                                         <span>{u.displayName || u.username}</span>
-                                        <span>{u.lastMessage ? `${u.lastMessage?.content}` : ''}</span>
+                                        <span>{u.lastMessage && (u.lastMessage.sender === me.id || u.lastMessage?.receiver === me.id) ? `${u.lastMessage?.content}` : ''}</span>
                                     </div>
                                 </div>
                                 <div className="right">
